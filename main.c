@@ -1,45 +1,37 @@
-#include <stdio.h>
-#include <string.h>
- 
-struct Books
+/*
+2.根据企业利润计算奖金
+题目： 
+根据企业利润计算奖金，从键盘输入利润，计算应发奖金金额，公式如下：
+	1）利润少于或等于10万元时，奖金可提成10%；
+	2）利润高于10万元，低于20万元时，低于10万元的部分（包括10万）按10%提成，高于10万元的部分（即减去10万后剩下的部分），可提成7.5%；
+	3）20万到40万之间时，高于20万元的部分，可提成5%；
+	4）40万到60万之间时，高于40万元的部分，可提成3%；
+	5）60万到100万之间时，高于60万元的部分，可提成1.5%；
+	6）高于100万元时，超过100万元的部分，按1%提成。 
+从键盘输入当月利润I，求应发放奖金总数？ 
+
+程序分析：
+	请利用数轴来分界，定位。注意定义时需把奖金定义为长整型。 
+*/
+#include<stdio.h>
+
+int main()
 {
-   char  title[50];
-   char  author[50];
-   char  subject[100];
-   int   book_id;
-};
-
-/* 函数声明 */
-void printBook( struct Books book );
-int main( )
-{
-   struct Books Book1;        /* 声明 Book1，类型为 Books */
-   struct Books Book2;        /* 声明 Book2，类型为 Books */
- 
-   /* Book1 详述 */
-   strcpy( Book1.title, "C Programming");
-   strcpy( Book1.author, "Nuha Ali"); 
-   strcpy( Book1.subject, "C Programming Tutorial");
-   Book1.book_id = 6495407;
-
-   /* Book2 详述 */
-   strcpy( Book2.title, "Telecom Billing");
-   strcpy( Book2.author, "Zara Ali");
-   strcpy( Book2.subject, "Telecom Billing Tutorial");
-   Book2.book_id = 6495700;
- 
-   /* 输出 Book1 信息 */
-   printBook( Book1 );
-
-   /* 输出 Book2 信息 */
-   printBook( Book2 );
-
-   return 0;
-}
-void printBook( struct Books book )
-{
-   printf( "Book title : %s\n", book.title);
-   printf( "Book author : %s\n", book.author);
-   printf( "Book subject : %s\n", book.subject);
-   printf( "Book book_id : %d\n", book.book_id);
+	double p,b;
+	printf("请输入利润：(万元)");
+	scanf("%lf",&p);
+	if(p<=10)
+	b = p*0.1;
+	else if (p<=20)
+	b = (p-10)*0.075+1;
+	else if(p<=40)
+	b = (p-20)*0.05+1.75;
+	else if(p<=60)
+	b = (p-40)*0.03+2.75;
+	else if(p<=100)
+	b = (p-60)*0.015+3.35;
+	else if(p>100)
+	b = (p-100)*0.01+3.95;
+	else printf("input error!");
+	printf("奖金是：%lf\n",b);
 }
