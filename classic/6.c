@@ -3,7 +3,8 @@
 
 void main(void)
 {
-	unsigned char *p1 = "中国的英文名是china!";
+	//const char *p1 = "中国的英文名是china!";题目使用的const会导致错误，因为char取值在-128 ~127，应取unsigned
+    unsigned char *p1 = "中国的英文名是china!";
 	int i, len, n_assic = 0, n_other = 0;
 	
 	len = strlen(p1);
